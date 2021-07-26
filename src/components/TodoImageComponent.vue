@@ -10,10 +10,10 @@
 
 <script>
 export default {
-  name: "Todo",
+  name: "TodoImageComponent",
   props: {
     todo: {
-      type: Object,     
+      type: Object,
     },
   },
   emits: ["remove"],
@@ -26,7 +26,8 @@ body {
   text-align: center;
 }
 .card-todo {
-  background: #ddd !important; color: #111;
+  background: yellow !important;
+  color: #111;
   padding: 20px;
   margin: 20px;
   border-radius: 10px;

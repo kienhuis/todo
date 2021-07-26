@@ -5,7 +5,9 @@ export default class TodoText extends Todo {
     super(title, id)
     this.text = text
   }
-
+  getType() {
+    return "TodoTextComponent"
+  }
   toJson() {
     const t = super.toJson()
     return {

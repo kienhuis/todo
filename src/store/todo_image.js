@@ -6,6 +6,9 @@ export default class TodoImage extends Todo {
     this.image = image
   }
 
+  getType() {
+    return "TodoImageComponent"
+  }
   toJson() {
     const t = super.toJson()
     return {

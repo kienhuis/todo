@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "Todo",
+  name: "Bla",
   props: {
     todo: {
       type: Object,     
@@ -26,7 +26,7 @@ body {
   text-align: center;
 }
 .card-todo {
-  background:  yellow !important; color: #111;
+  background: #ddd !important; color: #111;
   padding: 20px;
   margin: 20px;
   border-radius: 10px;

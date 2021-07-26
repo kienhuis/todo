@@ -1,13 +1,16 @@
 <template>
-  <button @click="addTodoText('Random todo text')">Add random todo TEXT</button>
+  <div class="root">
+    <button @click="addTodoText('Random todo text')">
+      Add random todo TEXT
+    </button>
 
-  <button @click="addTodoImage('Random todo image')">
-    Add random todo IMAGE
-  </button>
+    <button @click="addTodoImage('Random todo image')">
+      Add random todo IMAGE
+    </button>
 
-  <h3>Hello</h3>
-  <h4>You have {{ todos.length }} things to do</h4>
-  <!-- 
+    <h3>Hello</h3>
+    <h4>You have {{ todos.length }} things to do</h4>
+    <!-- 
   <component
    :is="factory(attribute.type)"
    v-for="(attribute, index) in attributesSettings.attributes"
@@ -17,32 +20,33 @@
    @attr-change="onAttrChange"
   /> -->
 
-  <!-- <div v-for="todo in todos" :key="todo.id">
+    <!-- <div v-for="todo in todos" :key="todo.id">
     <component :is="Foo" :todo="todo" />
   </div> -->
 
-  <div v-for="todo in todos" :key="todo.id">
-    <bla v-if:="todo instanceof TodoText" :todo="todo" class="card-todo" @remove="removeTodo(todo.id)"/>
-    <foo v-if:="todo instanceof TodoImage" :todo="todo" class="card-todo" @remove="removeTodo(todo.id)"/> 
-    <!-- <component :is="bla" :todo="todo" class="card-todo" @remove="removeTodo(todo.id)"/> -->
+    <div v-for="(todo, index) in todos" :key="index">
+      <component
+        :is="todo.getType()"
+        :key="index"
+        :todo="todo"
+        class="card-todo"
+        @remove="removeTodo(todo.id)"
+      /> 
+    </div>
   </div>
 </template>
 
 <script>
-
 import Store from "@/store/todos.js";
-import TodoText from "@/store/todo_text.js";
-import TodoImage from "@/store/todo_image.js";
+import TodoTextComponent from "./TodoTextComponent.vue";
+import TodoImageComponent from "./TodoImageComponent.vue";
 
 export default {
   name: "TodoList",
- 
+  components: { TodoTextComponent, TodoImageComponent },
   setup() {
- 
     window.Store = Store; // for testing from chrome
     return {
-      TodoText,
-      TodoImage,
       todos: Store.todos,
       addTodoText: Store.addTodoText,
       addTodoImage: Store.addTodoImage,
