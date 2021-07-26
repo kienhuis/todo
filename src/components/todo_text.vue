@@ -26,6 +26,7 @@ body {
   text-align: center;
 }
 .card-todo {
+  background: #ddd !important; color: #111;
   padding: 20px;
   margin: 20px;
   border-radius: 10px;

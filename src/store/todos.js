@@ -1,24 +1,29 @@
-import {reactive, watch} from 'vue'
-import Todo from './todo'
+import { reactive } from 'vue'
+import TodoText from './todo_text.js'
+import TodoImage from './todo_image.js'
 
 
 class Todos {
-  constructor(){
+  constructor() {
     this.todos = []
   }
 
-  addTodo(title="Initial Todo"){
-    this.todos.push(new Todo(title))
+  addTodoText(title = "Initial Text Todo") {
+    this.todos.push(new TodoText(title))
   }
 
-  removeTodo(todoId){
+  addTodoImage(title = "Initial Image Todo") {
+    this.todos.push(new TodoImage(title))
+  }
+
+  removeTodo(todoId) {
     const deleteIndex = this.todos.findIndex(todo => todo.id == todoId);
     this.todos.splice(deleteIndex, 1);
   }
 
-  toJson(){
+  toJson() {
     return {
-      todos: this.todos.map(todo=>todo.toJson())
+      todos: this.todos.map(todo => todo.toJson())
     }
   }
 }
